@@ -1,0 +1,60 @@
+﻿
+<h3>Meu DashBoard</h3>
+
+<br />
+<br />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+
+<div class="panel panel-default" style="width:50%">
+    <div class="panel-body">
+        <div id="canvas-holder">
+            <canvas id="chart-area"></canvas>
+        </div>
+        <script>
+    var randomScalingFactor = function () {
+        return Math.round(Math.random() * 100);
+    };
+
+    var config = {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: [
+                    @Html.Raw(ViewBag.valoresPie)
+                ],
+                backgroundColor: [
+                    @Html.Raw(ViewBag.coresPie)
+                ],
+                label: 'Dataset 1'
+            }],
+            labels: [
+                @Html.Raw(ViewBag.labelsPie)
+            ]
+        },
+        options: {
+            responsive: true
+        }
+    };
+
+    window.onload = function () {
+        var ctx = document.getElementById('chart-area').getContext('2d');
+        window.myPie = new Chart(ctx, config);
+    };
+            var Cartoes = [ @Html.Raw(ViewBag.LabelsBar)];
+    var barChartData = {
+        labels: [ @Html.Raw(ViewBag.LabelsBar)],
+        datasets: [{
+            backgroundColor:"#0688FF",
+            borderColor: "#0540E8",
+            borderWidth: 1,
+            data: [
+                 @Html.Raw(ViewBag.ValoresBar)
+            ]
+        }]
+
+    };
+
+        </script>
+    </div>
+</div>
