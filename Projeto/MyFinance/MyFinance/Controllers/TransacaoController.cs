@@ -24,12 +24,12 @@ namespace MyFinance.Controllers
         }
 
         [HttpPost]
-        public IActionResult Registrar(TransacaoModel formulario)
+        public IActionResult Registrar(TransacaoModel form)
         {
             if (ModelState.IsValid)
             {
-                formulario.HttpContextAccessor = HttpContextAccessor;
-                formulario.Insert();
+                form.HttpContextAccessor = HttpContextAccessor;
+                form.Insert();
                 return RedirectToAction("Index");
             }
 
